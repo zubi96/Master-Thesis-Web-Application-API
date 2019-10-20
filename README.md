@@ -1,7 +1,6 @@
 # Master-Thesis-Web-Application-API
-Web Application and Application Programming Interface made with .NET Core and Angular as part of Master's Thesis: Development of mobile and web applications for cultural heritage assistance
+Application Programming Interface made with .NET Core 2.2 as part of Master's Thesis: Development of mobile and web applications for cultural heritage assistance
 
-### Technologies used:
-- .NET Core and C# for server-side code
-- Angular and TypeScript for client-side code
-- Bootstrap for layout and styling
+#### Linked projects
+https://github.com/zubi96/Master-Thesis-Web-Application-Frontend
+https://github.com/zubi96/Master-Thesis-Mobile-Application
