@@ -1,4 +1,4 @@
-# Master-Thesis-Web-Application
+# Master-Thesis-Web-Application-API
 Web Application and Application Programming Interface made with .NET Core and Angular as part of Master's Thesis: Development of mobile and web applications for cultural heritage assistance
 
 ### Technologies used:
