@@ -8,10 +8,6 @@ namespace MasterThesisWebApplication.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<RegionForCreationDto, Region>();
-            CreateMap<Region, RegionToReturnDto>();
-            CreateMap<Admin, AdminToReturnDto>();
-            CreateMap<ModeratorForCreationDto, Admin>();
         }
     }
 }

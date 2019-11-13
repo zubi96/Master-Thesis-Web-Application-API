@@ -51,8 +51,6 @@ namespace MasterThesisWebApplication.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.Property<int?>("RegionId");
-
                     b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("TwoFactorEnabled");
@@ -70,8 +68,6 @@ namespace MasterThesisWebApplication.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("RegionId");
-
                     b.ToTable("AspNetUsers");
                 });
 
@@ -86,23 +82,6 @@ namespace MasterThesisWebApplication.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
-                });
-
-            modelBuilder.Entity("MasterThesisWebApplication.Models.Region", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Regions");
                 });
 
             modelBuilder.Entity("MasterThesisWebApplication.Models.Role", b =>
@@ -198,13 +177,6 @@ namespace MasterThesisWebApplication.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("MasterThesisWebApplication.Models.Admin", b =>
-                {
-                    b.HasOne("MasterThesisWebApplication.Models.Region", "Region")
-                        .WithMany("Admins")
-                        .HasForeignKey("RegionId");
                 });
 
             modelBuilder.Entity("MasterThesisWebApplication.Models.AdminRole", b =>

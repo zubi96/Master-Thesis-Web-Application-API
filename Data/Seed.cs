@@ -17,7 +17,7 @@ namespace MasterThesisWebApplication.Data
                 var roles = new List<Role>
                 {
                     new Role {Name = "Admin"},
-                    new Role {Name = "Moderator"}
+                    //new Role {Name = "Moderator"}
                 };
 
                 foreach (var role in roles)

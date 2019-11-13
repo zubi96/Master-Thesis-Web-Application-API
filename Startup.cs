@@ -67,11 +67,11 @@ namespace MasterThesisWebApplication
             builder.AddRoleManager<RoleManager<Role>>();
             builder.AddSignInManager<SignInManager<Admin>>();
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
-                options.AddPolicy("RequireModeratorRole", policy => policy.RequireRole("Moderator"));
-            });
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+            //    options.AddPolicy("RequireModeratorRole", policy => policy.RequireRole("Moderator"));
+            //});
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -95,7 +95,7 @@ namespace MasterThesisWebApplication
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(opt =>
                 {
-                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                    opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 });
 
             services.AddCors();

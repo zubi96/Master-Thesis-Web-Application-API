@@ -16,31 +16,29 @@ using Microsoft.Extensions.Configuration;
 
 namespace MasterThesisWebApplication.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     [AllowAnonymous]
     public class AuthController : Controller
     {
         private readonly IConfiguration _config;
-        private readonly IMapper _mapper;
         private readonly UserManager<Admin> _adminManager;
         private readonly SignInManager<Admin> _signInManager;
         
-        public AuthController(IConfiguration config, IMapper mapper, UserManager<Admin> adminManager, SignInManager<Admin> signInManager)
+        public AuthController(IConfiguration config, UserManager<Admin> adminManager, SignInManager<Admin> signInManager)
         {
             _config = config;
-            _mapper = mapper;
             _adminManager = adminManager;
             _signInManager = signInManager;
         }
 
-        [HttpPost("login")]
+        [HttpPost]
         public async Task<IActionResult> Login([FromBody] AdminForLoginDto adminForLoginDto)
         {
             var user = await _adminManager.FindByNameAsync(adminForLoginDto.Username);
 
             if (user == null)
-                return BadRequest();
+                return Unauthorized();
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, adminForLoginDto.Password, false);
 
