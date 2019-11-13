@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\My Files\\Development\\.NET\\MasterThesisWebApplication\\MasterThesisWebApplication.csproj": {}
+    "C:\\My Files\\Development\\.NET\\Master-Thesis-Web-Application-API\\MasterThesisWebApplication.csproj": {}
   },
   "projects": {
-    "C:\\My Files\\Development\\.NET\\MasterThesisWebApplication\\MasterThesisWebApplication.csproj": {
+    "C:\\My Files\\Development\\.NET\\Master-Thesis-Web-Application-API\\MasterThesisWebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\My Files\\Development\\.NET\\MasterThesisWebApplication\\MasterThesisWebApplication.csproj",
+        "projectUniqueName": "C:\\My Files\\Development\\.NET\\Master-Thesis-Web-Application-API\\MasterThesisWebApplication.csproj",
         "projectName": "MasterThesisWebApplication",
-        "projectPath": "C:\\My Files\\Development\\.NET\\MasterThesisWebApplication\\MasterThesisWebApplication.csproj",
+        "projectPath": "C:\\My Files\\Development\\.NET\\Master-Thesis-Web-Application-API\\MasterThesisWebApplication.csproj",
         "packagesPath": "C:\\Users\\Zubi\\.nuget\\packages\\",
-        "outputPath": "C:\\My Files\\Development\\.NET\\MasterThesisWebApplication\\obj\\",
+        "outputPath": "C:\\My Files\\Development\\.NET\\Master-Thesis-Web-Application-API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,22 +41,29 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
             },
-            "Microsoft.AspNetCore.Razor.Design": {
-              "suppressParent": "All",
+            "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[2.1.1, )"
             },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
             }
           },
           "imports": [
