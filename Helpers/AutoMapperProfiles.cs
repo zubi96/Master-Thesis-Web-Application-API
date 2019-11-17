@@ -8,6 +8,15 @@ namespace MasterThesisWebApplication.Helpers
     {
         public AutoMapperProfiles()
         {
+            CreateMap<CategoryForCreationDto, Category>();
+            CreateMap<Category, CategoryToReturnDto>();
+
+            CreateMap<LocationForCreationDto, Location>();
+            CreateMap<Location, LocationToReturnDto>()
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
+
+            CreateMap<PhotoForCreationDto, Photo>();
+            CreateMap<Photo, PhotoToReturnDto>();
         }
     }
 }

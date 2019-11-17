@@ -67,11 +67,11 @@ namespace MasterThesisWebApplication
             builder.AddRoleManager<RoleManager<Role>>();
             builder.AddSignInManager<SignInManager<Admin>>();
 
-            //services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
-            //    options.AddPolicy("RequireModeratorRole", policy => policy.RequireRole("Moderator"));
-            //});
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+                //options.AddPolicy("RequireModeratorRole", policy => policy.RequireRole("Moderator"));
+            });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -98,6 +98,7 @@ namespace MasterThesisWebApplication
                     opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 });
 
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddCors();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddScoped<IAdminRepository, AdminRepository>();

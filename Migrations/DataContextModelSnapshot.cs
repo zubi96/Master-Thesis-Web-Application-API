@@ -84,6 +84,65 @@ namespace MasterThesisWebApplication.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
+            modelBuilder.Entity("MasterThesisWebApplication.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("MasterThesisWebApplication.Models.Location", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<string>("LatLong");
+
+                    b.Property<string>("LongDescription");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("ShortDescription");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("MasterThesisWebApplication.Models.Photo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("LocationId");
+
+                    b.Property<string>("PublicId");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
+
+                    b.ToTable("Photos");
+                });
+
             modelBuilder.Entity("MasterThesisWebApplication.Models.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -189,6 +248,22 @@ namespace MasterThesisWebApplication.Migrations
                     b.HasOne("MasterThesisWebApplication.Models.Admin", "Admin")
                         .WithMany("AdminRoles")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MasterThesisWebApplication.Models.Location", b =>
+                {
+                    b.HasOne("MasterThesisWebApplication.Models.Category", "Category")
+                        .WithMany("Locations")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MasterThesisWebApplication.Models.Photo", b =>
+                {
+                    b.HasOne("MasterThesisWebApplication.Models.Location", "Location")
+                        .WithMany("Photos")
+                        .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

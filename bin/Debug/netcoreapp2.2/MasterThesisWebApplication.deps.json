@@ -25,6 +25,7 @@
       "MasterThesisWebApplication/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
+          "CloudinaryDotNet": "1.9.0",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.EntityFrameworkCore.Proxies": "2.1.1",
           "Microsoft.NETCore.App": "2.2.0",
@@ -88,6 +89,20 @@
         },
         "compile": {
           "lib/netstandard1.3/Castle.Core.dll": {}
+        }
+      },
+      "CloudinaryDotNet/1.9.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard1.3/CloudinaryDotNet.dll": {
+            "assemblyVersion": "1.8.1.0",
+            "fileVersion": "1.8.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.3/CloudinaryDotNet.dll": {}
         }
       },
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
@@ -3677,6 +3692,13 @@
       "sha512": "sha512-XSNA0Gc1Zu33L+8+/3Tqt+aFu8QWS8UenVHZ7RenIP5wJfhoLrA4PnNscpxReeo5aBq8PDoGnV8rNaOzIOUo/w==",
       "path": "castle.core/4.2.1",
       "hashPath": "castle.core.4.2.1.nupkg.sha512"
+    },
+    "CloudinaryDotNet/1.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2E+jY40ZNyBpRW2y57V5HtVif8ocJVdpYBPw5xOoA6QAkW6unuZ3kgllIbGPKGkIjKdggsrmtQFGkeUx59cCEw==",
+      "path": "cloudinarydotnet/1.9.0",
+      "hashPath": "cloudinarydotnet.1.9.0.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
       "type": "package",

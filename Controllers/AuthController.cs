@@ -16,9 +16,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace MasterThesisWebApplication.Controllers
 {
+    [AllowAnonymous]
     [Route("[controller]")]
     [ApiController]
-    [AllowAnonymous]
     public class AuthController : Controller
     {
         private readonly IConfiguration _config;
