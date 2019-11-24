@@ -11,16 +11,13 @@ namespace MasterThesisWebApplication.Dtos
     {
         [Required]
         public string Name { get; set; }
-        [Required]
         public string ShortDescription { get; set; }
-        [Required]
         public string LongDescription { get; set; }
-        [Required]
-        public string LatLong { get; set; }
+        public double Lat { get; set; } = 45.3286;
+        public double Lng { get; set; } = 14.4665;
         public DateTime DateCreated { get; set; }
         [Required]
         public int CategoryId { get; set; }
-
         public LocationForCreationDto()
         {
             DateCreated = DateTime.Now;

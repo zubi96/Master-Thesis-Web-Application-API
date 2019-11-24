@@ -12,7 +12,8 @@ namespace MasterThesisWebApplication.Models
         public string Name { get; set; }
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
-        public string LatLong { get; set; }
+        public double Lat { get; set; }
+        public double Lng { get; set; }
         public DateTime DateCreated { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }

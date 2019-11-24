@@ -12,8 +12,6 @@ namespace MasterThesisWebApplication.Dtos
         public IFormFile File { get; set; }
         public DateTime DateAdded { get; set; }
         public string PublicId { get; set; }
-        public int LocationId { get; set; }
-
         public PhotoForCreationDto()
         {
             DateAdded = DateTime.Now;

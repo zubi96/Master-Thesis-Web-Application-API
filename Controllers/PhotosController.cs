@@ -54,10 +54,10 @@ namespace MasterThesisWebApplication.Controllers
             return Ok(photoToReturn);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddPhotoForLocation([FromForm] PhotoForCreationDto photoForCreationDto)
+        [HttpPost("{photoId}")]
+        public async Task<IActionResult> AddPhotoForLocation(int photoId, [FromForm] PhotoForCreationDto photoForCreationDto)
         {
-            var locationFromRepo = await _repo.GetLocation(photoForCreationDto.LocationId);
+            var locationFromRepo = await _repo.GetLocation(photoId);
 
             if (locationFromRepo == null)
                 return NoContent();
@@ -72,7 +72,7 @@ namespace MasterThesisWebApplication.Controllers
                     var uploadParams = new ImageUploadParams()
                     {
                         File = new FileDescription(file.Name, stream),
-                        Transformation = new Transformation().Width(1000).Height(500).Crop("fill")
+                        Transformation = new Transformation().Width(590).Height(590).Crop("fill")
                     };
 
                     uploadResult = _cloudinary.Upload(uploadParams);
@@ -93,6 +93,22 @@ namespace MasterThesisWebApplication.Controllers
             }
 
             return BadRequest("Could not add photo");
+        }
+
+        [HttpDelete("{photoId}")]
+        public async Task<IActionResult> DeletePhoto(int photoId)
+        {
+            var photo = await _repo.GetPhoto(photoId);
+
+            if (photo == null)
+                return NoContent();
+
+            _repo.Delete(photo);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Deleting category failed.");
         }
     }
 }

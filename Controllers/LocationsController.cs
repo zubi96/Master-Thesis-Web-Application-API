@@ -42,7 +42,7 @@ namespace MasterThesisWebApplication.Controllers
         [HttpGet("{locationId}", Name = "GetLocation")]
         public async Task<IActionResult> GetLocation(int locationId)
         {
-            var location = await _repo.GetCategory(locationId);
+            var location = await _repo.GetLocation(locationId);
 
             if (location == null)
                 return NoContent();
@@ -78,7 +78,7 @@ namespace MasterThesisWebApplication.Controllers
             _mapper.Map(locationForCreationDto, locationFromRepo);
 
             if (await _repo.SaveAll())
-                return Ok("Location updated");
+                return Ok();
 
             return BadRequest("Updating the location failed.");
         }
@@ -94,7 +94,7 @@ namespace MasterThesisWebApplication.Controllers
             _repo.Delete(location);
 
             if (await _repo.SaveAll())
-                return Ok("Location deleted");
+                return Ok();
 
             return BadRequest("Deleting location failed.");
         }

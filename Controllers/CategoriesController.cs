@@ -86,7 +86,7 @@ namespace MasterThesisWebApplication.Controllers
             _mapper.Map(categoryForCreationDto, categoryFromRepo);
 
             if (await _repo.SaveAll())
-                return Ok("Category updated");
+                return Ok();
 
             return BadRequest("Updating the category failed.");
         }
@@ -102,7 +102,7 @@ namespace MasterThesisWebApplication.Controllers
             _repo.Delete(category);
 
             if (await _repo.SaveAll())
-                return Ok("Category deleted");
+                return Ok();
 
             return BadRequest("Deleting category failed.");
         }
