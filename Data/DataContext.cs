@@ -13,6 +13,7 @@ namespace MasterThesisWebApplication.Data
         public DbSet<Location> Locations { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<MobileUser> MobileUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

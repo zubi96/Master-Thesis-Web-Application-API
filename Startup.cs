@@ -2,6 +2,7 @@
 using System.Text;
 using AutoMapper;
 using MasterThesisWebApplication.Data;
+using MasterThesisWebApplication.Data.Interfaces;
 using MasterThesisWebApplication.Data.Repositories;
 using MasterThesisWebApplication.Helpers;
 using MasterThesisWebApplication.Models;
@@ -102,6 +103,7 @@ namespace MasterThesisWebApplication
             services.AddCors();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IMobileAuthRepository, MobileAuthRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
