@@ -13,5 +13,18 @@ namespace MasterThesisWebApplication.Dtos
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [Required]
+        public string Country { get; set; }
+        [Required]
+        public DateTime DateOfBirth { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public MobileUserForRegisterDto()
+        {
+            CreatedAt = DateTime.Now;
+        }
     }
 }

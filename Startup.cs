@@ -104,6 +104,7 @@ namespace MasterThesisWebApplication
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddScoped<IAdminRepository, AdminRepository>();
             services.AddScoped<IMobileAuthRepository, MobileAuthRepository>();
+            services.AddScoped<IMobileRepository, MobileRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

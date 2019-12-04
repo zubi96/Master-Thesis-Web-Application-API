@@ -19,6 +19,9 @@ namespace MasterThesisWebApplication.Helpers
             CreateMap<Photo, PhotoToReturnDto>();
             CreateMap<MobileUserForLoginDto, MobileUser>();
             CreateMap<MobileUserForRegisterDto, MobileUser>();
+            CreateMap<Location, DiscoveredLocationToReturnDto>();
+            CreateMap<Location, UndiscoveredLocationToReturnDto>();
+
         }
     }
 }

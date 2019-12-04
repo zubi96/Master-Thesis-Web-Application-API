@@ -14,6 +14,7 @@ namespace MasterThesisWebApplication.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<MobileUser> MobileUsers { get; set; }
+        public DbSet<MobileUserLocation> MobileUserLocations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -33,6 +34,21 @@ namespace MasterThesisWebApplication.Data
                     .HasForeignKey(ur => ur.UserId)
                     .IsRequired();
             });
+
+            builder.Entity<MobileUserLocation>(MobileUserLocations =>
+                {
+                    MobileUserLocations.HasKey(ml => new {ml.LocationId, ml.MobileUserId});
+
+                    MobileUserLocations.HasOne(ml => ml.Location)
+                        .WithMany(l => l.MobileUserLocations)
+                        .HasForeignKey(ml => ml.LocationId)
+                        .IsRequired();
+
+                    MobileUserLocations.HasOne(ml => ml.MobileUser)
+                        .WithMany(m => m.MobileUserLocations)
+                        .HasForeignKey(ml => ml.MobileUserId)
+                        .IsRequired();
+                });
         }
     }
 }

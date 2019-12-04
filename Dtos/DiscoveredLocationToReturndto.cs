@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MasterThesisWebApplication.Dtos;
 
-namespace MasterThesisWebApplication.Models
+namespace MasterThesisWebApplication.Dtos
 {
-    public class Location
+    public class DiscoveredLocationToReturnDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,9 +14,7 @@ namespace MasterThesisWebApplication.Models
         public double Lat { get; set; }
         public double Lng { get; set; }
         public DateTime DateCreated { get; set; }
-        public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
-        public virtual ICollection<Photo> Photos { get; set; }
-        public virtual ICollection<MobileUserLocation> MobileUserLocations { get; set; }
+        public string CategoryName { get; set; }
+        public virtual ICollection<PhotoToReturnDto> Photos { get; set; }
     }
 }

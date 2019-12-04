@@ -4,14 +4,16 @@ using MasterThesisWebApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MasterThesisWebApplication.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20191129080828_Extended user model")]
+    partial class Extendedusermodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,19 +155,6 @@ namespace MasterThesisWebApplication.Migrations
                     b.ToTable("MobileUsers");
                 });
 
-            modelBuilder.Entity("MasterThesisWebApplication.Models.MobileUserLocation", b =>
-                {
-                    b.Property<int>("LocationId");
-
-                    b.Property<int>("MobileUserId");
-
-                    b.HasKey("LocationId", "MobileUserId");
-
-                    b.HasIndex("MobileUserId");
-
-                    b.ToTable("MobileUserLocations");
-                });
-
             modelBuilder.Entity("MasterThesisWebApplication.Models.Photo", b =>
                 {
                     b.Property<int>("Id")
@@ -298,19 +287,6 @@ namespace MasterThesisWebApplication.Migrations
                     b.HasOne("MasterThesisWebApplication.Models.Category", "Category")
                         .WithMany("Locations")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MasterThesisWebApplication.Models.MobileUserLocation", b =>
-                {
-                    b.HasOne("MasterThesisWebApplication.Models.Location", "Location")
-                        .WithMany("MobileUserLocations")
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MasterThesisWebApplication.Models.MobileUser", "MobileUser")
-                        .WithMany("MobileUserLocations")
-                        .HasForeignKey("MobileUserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

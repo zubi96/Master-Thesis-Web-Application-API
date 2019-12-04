@@ -18,7 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace MasterThesisWebApplication.Controllers
 {
     [AllowAnonymous]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class MobileAuthController : ControllerBase
     {
