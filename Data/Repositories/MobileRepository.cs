@@ -39,15 +39,8 @@ namespace MasterThesisWebApplication.Data.Repositories
 
         public async Task<IEnumerable<Location>> GetDiscoveredLocations(int userId)
         {
-            var discoveredLocationsId = await _context.MobileUserLocations
-                .Where(u => u.MobileUserId == userId)
-                .Select(l => l.LocationId)
-                .ToListAsync();
-
-            var discoveredLocations = await _context.Locations.ToListAsync();
-            discoveredLocations.RemoveAll(l => !discoveredLocationsId.Contains(l.Id));
-
-            return discoveredLocations;
+            var user = await _context.MobileUsers.FirstOrDefaultAsync(u => u.Id == userId);
+            return user.MobileUserLocations.Select(l => l.Location);
         }
 
         public async Task<IEnumerable<Location>> GetUndiscoveredLocations(int userId)
