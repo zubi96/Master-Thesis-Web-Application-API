@@ -14,6 +14,7 @@ namespace MasterThesisWebApplication.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Country { get; set; }
+        public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime CreatedAt { get; set; }
         public virtual ICollection<MobileUserLocation> MobileUserLocations { get; set; }

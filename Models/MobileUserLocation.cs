@@ -11,5 +11,11 @@ namespace MasterThesisWebApplication.Models
         public virtual MobileUser MobileUser { get; set; }
         public int LocationId { get; set; }
         public virtual Location Location { get; set; }
+        public DateTime CreatedAt { get; set; }
+
+        public MobileUserLocation()
+        {
+            CreatedAt = DateTime.Now;
+        }
     }
 }

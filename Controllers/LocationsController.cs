@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -9,6 +10,7 @@ using MasterThesisWebApplication.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using QRCoder;
 
 namespace MasterThesisWebApplication.Controllers
 {
@@ -97,6 +99,32 @@ namespace MasterThesisWebApplication.Controllers
                 return Ok();
 
             return BadRequest("Deleting location failed.");
+        }
+
+        [HttpGet("getQRCode/{locationId}")]
+        public async Task<IActionResult> GetQRCode(int locationId)
+        {
+            var location = await _repo.GetLocation(locationId);
+
+            if (location == null)
+                return NoContent();
+
+            // Generate QR code
+            var qrGenerator = new QRCodeGenerator();
+            var qrCodeData = qrGenerator.CreateQrCode("cVE5U3SqB1foiFjM" + locationId,
+                QRCodeGenerator.ECCLevel.Q);
+            var qrCode = new QRCode(qrCodeData);
+            var qrCodeImage = qrCode.GetGraphic(3);
+
+            var stream = new System.IO.MemoryStream();
+            qrCodeImage.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+            var imageBytes = stream.ToArray();
+            var base64String = Convert.ToBase64String(imageBytes);
+
+            return Ok(new
+            {
+                value = base64String
+            });
         }
     }
 }

@@ -20,6 +20,8 @@ namespace MasterThesisWebApplication.Dtos
         [Required]
         public string Country { get; set; }
         [Required]
+        public string Gender { get; set; }
+        [Required]
         public DateTime DateOfBirth { get; set; }
         public DateTime CreatedAt { get; set; }
         public MobileUserForRegisterDto()

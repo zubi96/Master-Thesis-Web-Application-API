@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MasterThesisWebApplication.Dtos;
 using MasterThesisWebApplication.Models;
 
 namespace MasterThesisWebApplication.Data
@@ -17,5 +18,20 @@ namespace MasterThesisWebApplication.Data
         Task<IEnumerable<Location>> GetLocations();
         Task<Location> GetLocation(int locationId);
         Task<Photo> GetPhoto(int photoId);
+
+        // Dashboard
+        Task<int> GetNumberOfLocations();
+        Task<int> GetNumberOfUsers();
+        Task<int> GetNumberOfTodayDiscoveredLocations();
+
+        // Analytics
+        Task<List<int>> UsersGenderCount();
+        Task<List<int>> UsersAgeCount();
+        Task<List<int>> UsersCountryCount();
+
+        Task<List<int>> GetScansByMonth();
+        Task<IEnumerable<LocationWithScanCount>> GetLocationsWithTimesScanned();
+
+
     }
 }

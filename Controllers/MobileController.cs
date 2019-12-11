@@ -9,7 +9,6 @@ using MasterThesisWebApplication.Dtos;
 using MasterThesisWebApplication.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 
 namespace MasterThesisWebApplication.Controllers
 {
@@ -41,7 +40,7 @@ namespace MasterThesisWebApplication.Controllers
                 return NotFound();
 
             if (await _repo.UserLocationAlreadyExist(locationId, userId))
-                return BadRequest("User has already discovered this location.");
+                return BadRequest("You have already discovered this location.");
 
             var mobileUserLocation = new MobileUserLocation
             {
@@ -91,11 +90,11 @@ namespace MasterThesisWebApplication.Controllers
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
+            var user = await _repo.GetUser(userId);
+            if (user == null)
+                return Unauthorized();
+
             var discoveredLocations = await _repo.GetDiscoveredLocations(userId);
-
-            if (!discoveredLocations.Any())
-                return BadRequest("No locations yet discovered");
-
             var discoveredLocationsToReturn = _mapper.Map<IEnumerable<DiscoveredLocationToReturnDto>>(discoveredLocations);
 
             return Ok(discoveredLocationsToReturn);

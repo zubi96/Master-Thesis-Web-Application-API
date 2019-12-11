@@ -48,7 +48,7 @@ namespace MasterThesisWebApplication.Data
                         .WithMany(m => m.MobileUserLocations)
                         .HasForeignKey(ml => ml.MobileUserId)
                         .IsRequired();
-                });
+             });
         }
     }
 }

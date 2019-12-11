@@ -4,14 +4,16 @@ using MasterThesisWebApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MasterThesisWebApplication.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20191211180654_QRCodeBase64 added to Location")]
+    partial class QRCodeBase64addedtoLocation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,6 +118,8 @@ namespace MasterThesisWebApplication.Migrations
                     b.Property<string>("LongDescription");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("QRCodeBase64");
 
                     b.Property<string>("ShortDescription");
 
