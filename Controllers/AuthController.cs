@@ -30,6 +30,12 @@ namespace MasterThesisWebApplication.Controllers
             _signInManager = signInManager;
         }
 
+        [HttpGet]
+        public IActionResult Test()
+        {
+            return Ok("Test");
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] AdminForLoginDto adminForLoginDto)
         {

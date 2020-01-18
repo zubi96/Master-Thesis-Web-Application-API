@@ -108,7 +108,7 @@ namespace MasterThesisWebApplication.Controllers
             if (await _repo.SaveAll())
                 return Ok();
 
-            return BadRequest("Deleting category failed.");
+            return BadRequest("Deleting photo failed.");
         }
     }
 }

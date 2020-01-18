@@ -25,7 +25,7 @@ namespace MasterThesisWebApplication.Data
                     roleManager.CreateAsync(role).Wait();
                 }
 
-                // Create admin user
+                // Create Admin user
                 var adminUser = new Admin
                 {
                     UserName = "admin"

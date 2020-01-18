@@ -71,7 +71,6 @@ namespace MasterThesisWebApplication
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
-                //options.AddPolicy("RequireModeratorRole", policy => policy.RequireRole("Moderator"));
             });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -126,7 +125,7 @@ namespace MasterThesisWebApplication
                 }));
             }
 
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             app.UseAuthentication();
             app.UseDefaultFiles();
             app.UseStaticFiles();
